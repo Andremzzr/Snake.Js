@@ -2,7 +2,8 @@ const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext("2d");
 const scale = 10;
 
-
+var points = 0;
+const points_display = document.getElementById("points");
 
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
@@ -27,9 +28,13 @@ const columns = canvas.width / scale;
                 
                 fruit.pickLocation();
                 fruit.draw();
+                points+= 1;
+                points_display.innerHTML = points;
             }
 
              if (snake.isDead()) {
+                 points = 0;
+                 points_display.innerHTML = points;
                  snake = new Snake();
                  fruit = new Fruit();
                  fruit.pickLocation();
